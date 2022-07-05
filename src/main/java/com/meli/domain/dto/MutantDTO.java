@@ -7,6 +7,6 @@ import lombok.Data;
 public class MutantDTO {
 
     @JsonProperty
-    public String[] dna;
+    private String[] dna;
 
 }
