@@ -20,7 +20,7 @@ public class StatsDNAServiceImp implements StatsDNAServicePort {
 
         List<DNAEntity> dnas;
         StatsDTO dto = new StatsDTO();
-        String[] mutantDnas = new String[] { "CCCC", "AAAA", "GGGG", "TTTT" };
+        String[] mutantDnas = new String[] { "CCCC", "AAAA", "GGGG", "TTTT", "cccc", "aaaa", "gggg", "tttt" };
         Integer mutant = 0;
         Integer human = 0;
         boolean isMutant = false;

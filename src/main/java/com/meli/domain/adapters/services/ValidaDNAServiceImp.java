@@ -10,15 +10,17 @@ import org.springframework.stereotype.Service;
 public class ValidaDNAServiceImp implements ValidaDNAServicePort {
 
     @Autowired
-    ValidaMutantUseCase validaMutantUseCase;
+    private ValidaMutantUseCase validaMutantUseCase;
 
     @Autowired
-    DNARepositoryPort dnaRepository;
+    private DNARepositoryPort dnaRepository;
 
     @Override
     public boolean isMutant(String[] dna) {
 
         dnaRepository.salvar(dna);
+
+        validaMutantUseCase.validaDiagonal(dna);
 
         if(validaMutantUseCase.validaHorizontal(dna) ||
                 validaMutantUseCase.validaVertical(dna) ||

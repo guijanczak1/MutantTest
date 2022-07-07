@@ -56,28 +56,29 @@ public class ValidaMutantUseCase {
     }
 
     public boolean validaDiagonal(String[] dna) {
-        String[] mutantDnas = new String[] { "CCCC", "AAAA", "GGGG", "TTTT" };
+        String[] mutantDnas = new String[] { "CCCC", "AAAA", "GGGG", "TTTT", "cccc", "aaaa", "gggg", "tttt" };
         
         //INDICE 0 COLUNA 0 PRA DIREITA/INDICE 0 PRA BAIXO
-        if (ValidaDiagonalIndiceZeroToRightAndZeroForDown(dna, mutantDnas)) return true;
+        if (validaDiagonalIndiceZeroToRightAndZeroForDown(dna, mutantDnas)) return true;
 
         //INDICE 5 COLUNA 0 PRA ESQUERDA/INDICE 5 PRA BAIXO
-        if (ValidaDiagonalIndiceFiveToLeftAndFiveForDown(dna, mutantDnas)) return true;
+        if (validaDiagonalIndiceFiveToLeftAndFiveForDown(dna, mutantDnas)) return true;
 
         //INDICE 0 COLUNA 5 PRA DIREITA/INDICE 0 PRA CIMA
-        if (ValidaDiagonalIndiceZeroToRightAndZeroForUp(dna, mutantDnas)) return true;
+        if (validaDiagonalIndiceZeroToRightAndZeroForUp(dna, mutantDnas)) return true;
 
         //INDICE 5 COLUNA 5 PRA ESQUERDA/INDICE 5 PRA CIMA
-        if (ValidaDiagonalIndiceFiveToLeftAndFiveForUp(dna, mutantDnas)) return true;
+        if (validaDiagonalIndiceFiveToLeftAndFiveForUp(dna, mutantDnas)) return true;
 
         return false;
     }
 
-    private boolean ValidaDiagonalIndiceFiveToLeftAndFiveForUp(String[] dna, String[] mutantDnas) {
+    public boolean validaDiagonalIndiceFiveToLeftAndFiveForUp(String[] dna, String[] mutantDnas) {
+        String strLinhaDiagonal = "";
+        int colunaBaixo = 5;
+        int contadorbreak = 0;
+
         for(int i=5; i<6; i--) {
-            String strLinhaDiagonal = "";
-            int colunaBaixo = 0;
-            int contadorbreak = 0;
             if(i < 3) {
                 if(i == 0) break;
                 for(int j=5; j < 6; j--) {
@@ -116,11 +117,12 @@ public class ValidaMutantUseCase {
         return false;
     }
 
-    private boolean ValidaDiagonalIndiceZeroToRightAndZeroForUp(String[] dna, String[] mutantDnas) {
+    public boolean validaDiagonalIndiceZeroToRightAndZeroForUp(String[] dna, String[] mutantDnas) {
+        String strLinhaDiagonal = "";
+        int colunaBaixo = 5;
+        int contadorbreak = 0;
+
         for(int i=0; i<5; i++) {
-            String strLinhaDiagonal = "";
-            int colunaBaixo = 0;
-            int contadorbreak = 0;
             if(i >= 3) {
                 for(int j=0; j < 5; j++) {
                     if(contadorbreak == 9) {
@@ -155,11 +157,12 @@ public class ValidaMutantUseCase {
         return false;
     }
 
-    private boolean ValidaDiagonalIndiceFiveToLeftAndFiveForDown(String[] dna, String[] mutantDnas) {
+    public boolean validaDiagonalIndiceFiveToLeftAndFiveForDown(String[] dna, String[] mutantDnas) {
+        String strLinhaDiagonal = "";
+        int coluna = 0;
+        int contadorbreak = 0;
+
         for(int i=5; i<6; i--) {
-            String strLinhaDiagonal = "";
-            int coluna = 0;
-            int contadorbreak = 0;
             if(i < 3) {
                 if(i == 0) break;
                 for(int j=5; j < 6; j--) {
@@ -198,11 +201,12 @@ public class ValidaMutantUseCase {
         return false;
     }
 
-    private boolean ValidaDiagonalIndiceZeroToRightAndZeroForDown(String[] dna, String[] mutantDnas) {
+    public boolean validaDiagonalIndiceZeroToRightAndZeroForDown(String[] dna, String[] mutantDnas) {
+        int coluna = 0;
+        int contadorbreak = 0;
+        String strLinhaDiagonal = "";
+
         for(int i=0; i<5; i++) {
-            String strLinhaDiagonal = "";
-            int coluna = 0;
-            int contadorbreak = 0;
             if(i >= 3) {
                 for(int j=0; j < 5; j++) {
                     if(contadorbreak == 9) {
@@ -237,7 +241,7 @@ public class ValidaMutantUseCase {
         return false;
     }
 
-    private boolean validaDnaMutant(String strLinhaDiagonal, String[] mutantDnas) {
+    public boolean validaDnaMutant(String strLinhaDiagonal, String[] mutantDnas) {
         for(String mutantDna : mutantDnas) {
             if(strLinhaDiagonal.contains(mutantDna)) {
                 return true;
@@ -246,7 +250,7 @@ public class ValidaMutantUseCase {
         return false;
     }
 
-    private boolean validaLetra(String ultimaLetra, int contadorLetraDNA) {
+    public boolean validaLetra(String ultimaLetra, int contadorLetraDNA) {
         if(contadorLetraDNA == 4) {
             if(ultimaLetra.equalsIgnoreCase("A") ||
                     ultimaLetra.equalsIgnoreCase("T") ||

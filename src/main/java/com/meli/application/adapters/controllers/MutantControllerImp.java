@@ -23,7 +23,7 @@ public class MutantControllerImp implements MutantControllerPort {
     public ResponseEntity<Boolean> mutant(MutantDTO mutantDto) {
 
         for(String mutant : mutantDto.getDna()) {
-            if(!(mutant.length() == 6)) {
+            if(!(mutantDto.getDna().length == 6) || !(mutant.length() == 6)) {
                 return new ResponseEntity<Boolean>(false, HttpStatus.LENGTH_REQUIRED);
             }
         }
